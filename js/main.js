@@ -1,26 +1,14 @@
 var app = {
 
     findByName: function() {
-        console.log('findByName');
-        this.store.findByName($('.search-key').val(), function(employees) {
-            var l = employees.length;
-            var e;
-            $('.employee-list').empty();
-            for (var i=0; i<l; i++) {
-                e = employees[i];
-                $('.employee-list').append('<li><a href="#employees/' + e.id + '">' + e.firstName + ' ' + e.lastName + '</a></li>');
-            }
+    	var self = this;
+    	this.store.findByName($('.search-key').val(), function(employees) {
+    		$('.employee-list').html(self.employeeLiTpl(employees));
         });
     },
 
     renderHomeView: function() {
-    	var html = 
-    		"<div class='header'><h1>Directory - Home<span><img class='userimage' src='./img/xbox_avatar_64_2014.png' /></span></h1></div>" +
-    		"<div class='search-view'>" +
-    		"<input class='search-key' type='text'/>" +
-    		"<ul class='employee-list'></ul>" +
-    		"</div>"
-    	$('body').html(html);
+    	$('body').html(this.homeTpl());
     	$('.search-key').on('keyup', $.proxy(this.findByName, this));
     },
     
@@ -29,6 +17,8 @@ var app = {
         this.store = new MemoryStore(function() {
         	self.renderHomeView();
         });
+        this.homeTpl = Handlebars.compile($("#home-tpl").html());
+        this.employeeLiTpl = Handlebars.compile($("#employee-li-tpl").html());
     }
 
 };
