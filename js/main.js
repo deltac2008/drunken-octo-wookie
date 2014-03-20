@@ -12,10 +12,19 @@ var app = {
     	$('.search-key').on('keyup', $.proxy(this.findByName, this));
     },
     
+    showAlert: function(message, title) {
+    	if(navigator.notofication){
+    		navigator.notificatiion.alert(message, null, title, 'OK');
+    	} else {
+    		alert(title ? (title + ": " + message) : message);
+    	}
+    },
+    
     initialize: function() {
     	var self = this;
         this.store = new MemoryStore(function() {
         	self.renderHomeView();
+        	//self.showAlert('Store Initialised', 'Info');
         });
         this.homeTpl = Handlebars.compile($("#home-tpl").html());
         this.employeeLiTpl = Handlebars.compile($("#employee-li-tpl").html());
