@@ -2,6 +2,9 @@ var app = {
 
 	registerEvents: function() {
 		var self = this;
+
+		$(window).on('hashchange', $.proxy(this.route, this));
+
 		// Check of browser supports touch events...
 		if (document.documentElement.hasOwnProperty('ontouchstart')) {
 			// ... if yes: register touch event listener to change the "selected" state of the item
@@ -21,7 +24,6 @@ var app = {
 			});
 		}
 		
-		$(window).on('hashchange', $.proxy(this.route, this));
 	},
 	
 
@@ -109,8 +111,8 @@ var app = {
 		this.detailsURL = /^#employees\/(\d{1,})/;
 		this.registerEvents();
 		this.store = new MemoryStore(function() {
-			//self.route();
-			self.renderHomeView();
+			self.route();
+			//self.renderHomeView();
 			//self.showAlert('Store Initialised', 'Info');
 		});
 		this.homeTpl = Handlebars.compile($("#home-tpl").html());
