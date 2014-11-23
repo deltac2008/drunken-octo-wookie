@@ -3,7 +3,7 @@
         xmlns:gap   = "http://phonegap.com/ns/1.0"
         id          = "uk.co.clayarda.dcdirectory"
         versionCode = "10"
-        version     = "1.1.1">
+        version     = "1.3.0">
  
     <name>Employee Directory</name>
  
@@ -11,7 +11,7 @@
         A simple employee directory application
     </description>
  
-    <author href="https://p1-deltac2008.rhcloud.com/app4/" email="david@claymarda.co.uk">
+    <author href="http://wwww.claymarda.co.uk" email="david@claymarda.co.uk">
         David Clayton
     </author>
  
