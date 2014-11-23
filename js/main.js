@@ -13,7 +13,7 @@ var app = {
     },
     
     showAlert: function(message, title) {
-    	if(navigator.notofication){
+    	if(navigator.notification){
     		navigator.notificatiion.alert(message, null, title, 'OK');
     	} else {
     		alert(title ? (title + ": " + message) : message);
