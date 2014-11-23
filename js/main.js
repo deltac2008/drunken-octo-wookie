@@ -109,8 +109,8 @@ var app = {
 		this.detailsURL = /^#employees\/(\d{1,})/;
 		this.registerEvents();
 		this.store = new MemoryStore(function() {
-			self.route();
-			//self.renderHomeView();
+			//self.route();
+			self.renderHomeView();
 			//self.showAlert('Store Initialised', 'Info');
 		});
 		this.homeTpl = Handlebars.compile($("#home-tpl").html());
